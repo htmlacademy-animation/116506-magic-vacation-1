@@ -1366,6 +1366,9 @@ img {
 .form__button {
   flex-grow: 1;
   max-width: 18rem; }
+  @media (min-width: 2000px) {
+    .form__button {
+      max-width: 180px; } }
   @media (orientation: portrait) {
     .form__button {
       position: relative;
@@ -1602,7 +1605,7 @@ img {
   line-height: 1.27;
   opacity: 0;
   transform: translateY(1.5rem);
-  transition: all 0.35s ease-out 0.2s; }
+  transition: opacity 0.35s ease-out 0.2s, transform 0.35s ease-out 0.2s; }
   .screen.active .intro__message {
     opacity: 1;
     transform: translateY(0); }
@@ -1872,7 +1875,7 @@ img {
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color 0.3s; }
+    transition: color 0.3s ease; }
     .page-header__menu a::after {
       content: "";
       position: absolute;
@@ -1882,7 +1885,7 @@ img {
       background-color: #ffffff;
       display: block;
       right: 0;
-      transition: width 0.3s, color 0.3s; }
+      transition: width 0.3s ease, color 0.3s ease; }
       @media (max-width: 1024px) and (orientation: portrait) {
         .page-header__menu a::after {
           right: 0;
@@ -2967,7 +2970,7 @@ img {
   line-height: 2rem;
   opacity: 0;
   transform: translateX(2rem);
-  transition: all 0.7s ease; }
+  transition: opacity 0.7s ease, transform 0.7s ease; }
   .screen.active .swiper-slide-active .slider__item-text {
     opacity: 1;
     transform: translateX(0);
@@ -3172,7 +3175,7 @@ img {
     background-color: #ffffff;
     border: 2px solid #ffffff;
     z-index: -1;
-    transition: all 0.2s; }
+    transition: width 0.2s ease, height 0.2s ease; }
   .social-block__toggler svg {
     position: absolute;
     top: 50%;
@@ -3260,7 +3263,7 @@ img {
     margin-bottom: 0.5rem;
     opacity: 0;
     transform: translateY(5px);
-    transition: all 0.2s ease-in-out 0.3s; }
+    transition: opacity 0.2s ease-in-out 0.3s, transform 0.2s ease-in-out 0.3s; }
     .social-block--active .social-block__list li {
       opacity: 1;
       transform: translateY(0); }
@@ -3288,7 +3291,7 @@ img {
   color: #ffffff;
   border: 2px solid transparent;
   border-radius: 50%;
-  transition: color 0.3s; }
+  transition: color 0.3s ease; }
   @media (min-width: 2000px) {
     .social-block__link {
       width: 40px;
