@@ -99,6 +99,10 @@
   flex-grow: 1;
   max-width: 18rem;
 
+  @media (min-width: $stop-scaling) {
+    max-width: 180px;
+  }
+
   @media (orientation: portrait) {
     position: relative;
     flex: none;

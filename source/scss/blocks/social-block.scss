@@ -35,7 +35,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition: all 0.2s;
+    transition: width 0.2s ease, height 0.2s ease;
   }
 
   svg {
@@ -149,7 +149,7 @@
     margin-bottom: 0.5rem;
     opacity: 0;
     transform: translateY(5px);
-    transition: all 0.2s ease-in-out 0.3s;
+    transition: opacity 0.2s ease-in-out 0.3s, transform 0.2s ease-in-out 0.3s;
 
     .social-block--active & {
       opacity: 1;
@@ -188,7 +188,7 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
