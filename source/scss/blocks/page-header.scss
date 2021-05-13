@@ -5,6 +5,11 @@
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
+  visibility: hidden;
+
+  body.loaded & {
+    visibility: visible;
+  }
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -35,6 +40,14 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transform: translateX(-30px);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(.32,.98,.65,1) 0.2s, transform 0.3s cubic-bezier(.32,.98,.65,1) 0.2s;
+
+  body.loaded & {
+    transform: translateX(0);
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -130,6 +143,12 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(.32,.98,.65,1) 0.4s;
+
+  body.loaded & {
+    opacity: 1;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;

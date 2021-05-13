@@ -36,6 +36,11 @@
     border: 2px solid $c-light;
     z-index: -1;
     transition: width 0.2s ease, height 0.2s ease;
+
+    body.loaded & {
+      animation: zoomIn 0.5s;
+      animation-delay: 0.4s;
+    }
   }
 
   svg {
@@ -261,5 +266,22 @@
         height: 10px;
       }
     }
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  80% {
+    width: 112.5%;
+    height: 112.5%;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
   }
 }
