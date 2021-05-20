@@ -124,6 +124,38 @@
   padding-left: 6.5rem;
   break-inside: avoid;
 
+  &:nth-child(1) {
+    &:before {
+      animation-delay: 0s;
+    }
+    p {
+      animation-delay: 0.2s;
+    }
+  }
+  &:nth-child(2) {
+    &:before {
+      animation-delay: 0.15s;
+    }
+    p {
+      animation-delay: 0.35s;
+    }
+  }
+  &:nth-child(3) {
+    &:before {
+      animation-delay: 0.3s;
+    }
+    p {
+      animation-delay: 0.5s;
+    }
+  }
+  &:nth-child(4) {
+    &:before {
+      animation-delay: 0.45s;
+    }
+    p {
+      animation-delay: 0.65s;
+    }
+  }
   @media (min-width: $stop-scaling) {
     margin: 0 0 62px;
     padding-top: 6px;
@@ -144,19 +176,15 @@
     font-size: 1.2rem;
   }
 
-  &::before {
-    content: counter(li);
-    counter-increment: li;
+  &:after,
+  &:before {
     position: absolute;
     top: 0;
     left: 0;
     width: 4.5rem;
     height: 4.5rem;
-    font-family: $font-alt;
     font-weight: 400;
     font-size: 2.4rem;
-    background-color: $c-purple;
-    border-radius: 50%;
     line-height: 5rem;
     text-align: center;
 
@@ -177,8 +205,36 @@
     }
   }
 
+  &:after {
+    content: counter(li);
+    counter-increment: li;
+    font-family: $font-alt;
+    opacity: 0;
+    animation-name: rulesNum;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  &:before {
+    content: "";
+    background-color: $c-purple;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    animation-name: rulesBg;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.21,.79,.66,1.25);
+  }
+
   p {
     margin: 0;
+    opacity: 0;
+    transform: translateX(25px);
+    animation-name: rulesText;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
@@ -186,11 +242,59 @@
   }
 }
 
+@keyframes rulesBg {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rulesNum {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rulesText {
+  0% {
+    transform: translateX(25px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .rules__link {
   position: absolute;
   bottom: 6rem;
   right: 5.6rem;
+  color: rgba(95, 69, 140, 0);
+  animation-name: rulesLinkText;
+  animation-duration: 0.5s;
+  animation-delay: 0.9s;
+  animation-fill-mode: forwards;
 
+  &:before {
+    left: auto;
+    right: 0;
+    opacity: 0;
+    transform: translate(0, -50%);
+    width: 6rem;
+    animation-name: rulesLinkBg;
+    animation-duration: 0.5s;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
+  }
   @media (min-width: $stop-scaling) {
     bottom: 60px;
     right: 56px;
@@ -209,5 +313,24 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
+  }
+}
+
+@keyframes rulesLinkBg{
+  0% {
+    opacity: 0;
+    width: 6rem;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+@keyframes rulesLinkText{
+  0% {
+    color: rgba(95, 69, 140, 0);
+  }
+  100% {
+    color: rgba(95, 69, 140, 1);
   }
 }
