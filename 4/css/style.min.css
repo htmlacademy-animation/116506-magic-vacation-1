@@ -3090,17 +3090,26 @@ body.loaded .page-header__nav {
 .rules__item:nth-child(2) p {
   animation-delay: 0.35s;
 }
+.rules__item:nth-child(2):after {
+  animation-delay: 0.2s;
+}
 .rules__item:nth-child(3):before {
   animation-delay: 0.3s;
 }
 .rules__item:nth-child(3) p {
   animation-delay: 0.5s;
 }
+.rules__item:nth-child(3):after {
+  animation-delay: 0.35s;
+}
 .rules__item:nth-child(4):before {
   animation-delay: 0.45s;
 }
 .rules__item:nth-child(4) p {
   animation-delay: 0.65s;
+}
+.rules__item:nth-child(4):after {
+  animation-delay: 0.5s;
 }
 @media (min-width: 2000px) {
   .rules__item {
