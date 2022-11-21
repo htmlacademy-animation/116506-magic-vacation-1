@@ -1,0 +1,15 @@
+.text__word {
+  display: block;
+  margin: 0 5px;
+  overflow: hidden;
+}
+
+.text__word > span {
+    transform: translate3d(0, 1.3em, 0);
+    display: inline-block;
+
+}
+
+.page-title.active .text__word > span {
+    transform: translate3d(0, 0, 0);
+}
