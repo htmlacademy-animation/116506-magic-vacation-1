@@ -39,18 +39,221 @@
     right: -1rem;
   }
 
-  picture {
-    display: block;
-    width: 100%;
-    height: 100%;
+  img {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
   }
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  .result__leaf-blue-1 {
+    left: 58%;
+    top: 60%;
+    width: 279px;
+    height: 261px;
+    opacity: 0;
+    transform-origin: left center;
+    transform: translate(-50%, -50%) rotate(-40deg);
+  }
+
+  @keyframes leafBlue1 {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(-40deg);
+    }
+
+    20% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(20deg);
+    }
+
+    35% {
+      transform: translate(-50%, -50%) rotate(-5deg);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) rotate(5deg);
+    }
+
+    65% {
+      transform: translate(-50%, -50%) rotate(-2deg);
+    }
+
+    80% {
+      transform: translate(-50%, -50%) rotate(2deg);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }   
+  }
+
+  .result__leaf-blue-2 {
+    top: 70%;
+    left: 37%;
+    width: 279px;
+    height: 241px;
+    opacity: 0;
+    transform-origin: right center;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  
+  @keyframes leafBlue2 {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    20% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-25deg);
+    }
+
+    35% {
+      transform: translate(-50%, -50%) rotate(7deg);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) rotate(-5deg);
+    }
+
+    65% {
+      transform: translate(-50%, -50%) rotate(3deg);
+    }
+
+    80% {
+      transform: translate(-50%, -50%) rotate(-2deg);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }   
+  }
+
+  .result__leaf-green {
+    left: 59%;
+    top: 65%;
+    width: 332px;
+    height: 159px;
+    opacity: 0;
+    transform-origin: left center;
+    transform: translate(-50%, -50%) rotate(-25deg);
+  }
+
+  @keyframes leafGreen {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(-25deg);
+    }
+
+    20% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(15deg);
+    }
+
+    35% {
+      transform: translate(-50%, -50%) rotate(-5deg);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) rotate(5deg);
+    }
+
+    65% {
+      transform: translate(-50%, -50%) rotate(-2deg);
+    }
+
+    80% {
+      transform: translate(-50%, -50%) rotate(2deg);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }   
+  }
+
+  .result__suitcase {
+    left: 47%;
+    top: 64%;
+    width: 300px;
+    transform: scale(0, 0) translate(-50%, -50%);
+    transform-origin: 10%;
+  }
+
+  @keyframes suitcase {
+    from {
+      transform: scale(0, 0) translate(-50%, -50%);
+      transform-origin: 10%;
+    }
+    70% {
+      transform: scale(1.2, 1.2) translate(-50%, -50%);
+    }
+    to {
+      transform: scale(1, 1) translate(-50%, -50%);
+    }   
+  }
+
+  .result__flamingo {
+    width: 200px;
+    top: 70%;
+    left: 43%;
+    opacity: 0;
+    transform: rotate(-20deg) translate(-50%, -10%);
+    transform-origin: center;
+  }
+
+  @keyframes flamingo1 {
+    from {
+      opacity: 0;
+      transform: rotate(-20deg) translate(-50%, -10%);
+      transform-origin: center;
+    }
+    70% {
+      opacity: 1;
+      transform: rotate(0deg) translate(-50%, -55%);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) translate(-50%, -50%);
+    }   
+  }
+
+  @keyframes flamingo2 {
+    from {
+      transform-origin: center;
+      transform: rotate(0deg) translate(-50%, -50%);
+    }
+
+    to {
+      transform: rotate(-10deg) translate(-50%, -40%);
+    }   
+  }
+}
+
+.screen--show {
+  .result__suitcase {
+    animation: .6s cubic-bezier(.1,.63,.3,.87) forwards suitcase;
+  }
+
+  .result__leaf-blue-1 {
+    animation: 2.5s linear .3s forwards leafBlue1;
+  }
+
+  .result__leaf-blue-2 {
+    animation: 2.5s linear .4s forwards leafBlue2;
+  }
+
+  .result__leaf-green {
+    animation: 2.2s linear .6s forwards leafGreen;
+  }
+
+  .result__flamingo {
+    animation: 1.5s linear forwards flamingo1, 2s linear 1.6s alternate infinite flamingo2;
   }
 }
 
