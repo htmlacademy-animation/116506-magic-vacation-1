@@ -104,8 +104,45 @@
   }
 }
 
+.prizes__desc span {
+  transform: translateX(2rem);
+  opacity: 0;
+  transition: opacity .3s 1.5s, transform .3s 1.6s;
+}
+
+.prizes__desc b {
+  width: 7rem;
+  opacity: 0;
+  transition: opacity .3s 1.5s;
+}
+
 .prizes__item {
   margin-left: 7.5rem;
+  transition: opacity .3s;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+
+    .prizes__desc b {
+      opacity: 1;
+    }
+
+    .prizes__desc span {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  &.prizes__item--journeys {
+    transform: translateX(128%);
+    transition: opacity .3s, transform .5s 2s ease-out;
+
+    &.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
   @media (min-width: $stop-scaling) {
     margin-left: 75px;
