@@ -306,6 +306,18 @@
   }
 }
 
+@keyframes resultBtnShow {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes resultBtnRotate {
+  to {
+    transform: translateX(0) rotate(0);
+  }
+}
+
 .result__button {
   @include btn-reset;
   display: flex;
@@ -318,6 +330,8 @@
   font-size: 2.4rem;
   line-height: 1.2;
   color: $c-light;
+  opacity: 0;
+  animation: resultBtnShow 1s 1s forwards;
 
   @media (min-width: $stop-scaling) {
     margin: auto auto 10px;
@@ -350,6 +364,8 @@
     width: 4rem;
     height: 4rem;
     color: $c-dark;
+    transform: translateX(5rem) rotate(135deg);
+    animation: resultBtnRotate 0.7s ease-out 1s forwards;
 
     @media (min-width: $stop-scaling) {
       margin-left: 15px;

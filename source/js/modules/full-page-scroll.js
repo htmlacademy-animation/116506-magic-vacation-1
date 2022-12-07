@@ -1,5 +1,4 @@
 import throttle from 'lodash/throttle';
-import AccentTypographyBuild from './accent-typography-build';
 
 export default class FullPageScroll {
   constructor() {
@@ -43,39 +42,6 @@ export default class FullPageScroll {
     this.emitChangeDisplayEvent();
   }
 
-  animationTopScreenTextLine() {
-    let classTitle = `.intro__title`;
-
-    switch (this.activeScreen) {
-      case 0:
-        classTitle = `.intro__title`;
-        break;
-      case 1:
-        classTitle = `.slider__item-title`;
-        break;
-      case 2:
-        classTitle = `.prizes__title`;
-        break;
-      case 3:
-        classTitle = `.rules__title`;
-        break;
-      case 4:
-        classTitle = `.game__title`;
-        break;
-    }
-
-    const animationTopScreenTextLine = new AccentTypographyBuild(
-        classTitle,
-        500,
-        `active`,
-        `transform`
-    );
-    animationTopScreenTextLine.destroyAnimation();
-    setTimeout(() => {
-      animationTopScreenTextLine.runAnimation();
-    }, 500);
-  }
-
   changeVisibilityDisplay() {
     const prizesBg = document.querySelector(`.prizes__bg`);
     if (this.lastScreen === 1 && this.activeScreen === 2
@@ -84,12 +50,10 @@ export default class FullPageScroll {
       prizesBg.classList.add(`visible`);
       prizesBg.addEventListener(`transitionend`, () => {
         this.changeActiveScreen();
-        this.animationTopScreenTextLine();
       });
     } else {
       prizesBg.classList.remove(`visible`);
       this.changeActiveScreen();
-      this.animationTopScreenTextLine();
     }
   }
 
