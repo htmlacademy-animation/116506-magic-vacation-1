@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import prizes from './prizes.js';
 
 export default class FullPageScroll {
   constructor() {
@@ -37,6 +38,17 @@ export default class FullPageScroll {
   }
 
   changePageDisplay() {
+    if (this.screenElements[this.activeScreen].classList.contains(`screen--prizes`)) {
+      setTimeout(() => {
+        prizes(0);
+      }, 1000);
+      setTimeout(() => {
+        prizes(1);
+      }, 3500);
+      setTimeout(() => {
+        prizes(2);
+      }, 7000);
+    }
     this.changeVisibilityDisplay();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
