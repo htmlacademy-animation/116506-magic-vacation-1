@@ -7,6 +7,7 @@ export default (i) => {
   let elapsed;
   let now;
   let prizesItem = document.querySelectorAll(`.prizes__item`);
+  // свг призов
   let prizesData = {
     0: {
       src: `img/primary-award.svg`,
