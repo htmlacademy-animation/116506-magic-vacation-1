@@ -115,7 +115,11 @@
   opacity: 0;
   transition: opacity .3s 1.5s;
 }
-
+.prizes__item--codes {
+  .prizes__desc b {
+    width: 20rem;
+  }
+}
 .prizes__item {
   margin-left: 7.5rem;
   transition: opacity .3s;
@@ -204,7 +208,7 @@
     }
 
     .prizes__icon {
-      width: 22rem;
+      width: 26rem;
 
       @media (min-width: $stop-scaling) {
         width: 188px;
