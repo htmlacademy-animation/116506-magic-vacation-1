@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import timer from './timer.js';
 import prizes from './prizes.js';
 
 export default class FullPageScroll {
@@ -12,6 +13,7 @@ export default class FullPageScroll {
     this.lastScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.timerGame = false;
   }
 
   init() {
@@ -49,6 +51,12 @@ export default class FullPageScroll {
         prizes(2);
       }, 7000);
     }
+
+    if ((this.screenElements[this.activeScreen].classList.contains(`screen--game`)) && !this.timerGame) {
+      this.timerGame = true;
+      timer();
+    }
+
     this.changeVisibilityDisplay();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
