@@ -1,4 +1,5 @@
 import SeacalfScene from './seacalfCanvas.js';
+import CrocodileScene from './crocodileCanvas.js';
 
 export default () => {
   let showResultEls = document.querySelectorAll(`.js-show-result`);
@@ -55,6 +56,12 @@ export default () => {
           let howManyTimes = animResult.length;
 
           animTimeOut();
+
+          let crocodileCanvasAnimate = new CrocodileScene({
+            canvas: document.querySelector(`#crocodile-canvas`)
+          });
+
+          crocodileCanvasAnimate.startAnimation();
         }
       });
     }
