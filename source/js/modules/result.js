@@ -1,3 +1,5 @@
+import SeacalfScene from './seacalfCanvas.js';
+
 export default () => {
   let showResultEls = document.querySelectorAll(`.js-show-result`);
   let results = document.querySelectorAll(`.screen--result`);
@@ -22,6 +24,12 @@ export default () => {
           for (let j = 0; j < animResult.length; j++) {
             animResult[j].beginElement();
           }
+
+          let seacalfCanvasAnimate = new SeacalfScene({
+            canvas: document.querySelector(`#seacalf-canvas`),
+          });
+
+          seacalfCanvasAnimate.startAnimation();
         }
 
         if (target === `result2`) {
