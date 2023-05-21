@@ -1,3 +1,4 @@
+
 .screen {
   position: relative;
   display: flex;
@@ -16,6 +17,12 @@
 
   @media (max-width: $tablet) and (orientation: landscape) {
     height: 100vh;
+  }
+
+  &__canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
@@ -309,18 +316,7 @@
   }
 }
 
-.screen--story {
-  background-color: $c-dark;
-  background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  @media (orientation: portrait) {
-    background-size: auto calc(100vh - 13.8rem), 100% 25rem;
-    background-position: top center, bottom center;
-  }
-}
+.screen--story {}
 
 .screen--prizes {
   background-color: $c-dark;
