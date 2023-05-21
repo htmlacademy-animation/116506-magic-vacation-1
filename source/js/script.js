@@ -10,6 +10,7 @@ import form from './modules/form.js';
 import social from './modules/social.js';
 import FullPageScroll from './modules/full-page-scroll';
 import typographyAnimation from './modules/typography-animation';
+import Intro from './modules/intro';
 
 // init modules
 loadPage();
@@ -22,6 +23,14 @@ result();
 form();
 social();
 typographyAnimation();
+
+const intro = new Intro();
+
+document.body.addEventListener(`screenChanged`, (e) => {
+  if (e.detail.screenName === `top`) {
+    intro.init();
+  }
+});
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
