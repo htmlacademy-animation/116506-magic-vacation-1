@@ -7,7 +7,7 @@ export default class Intro {
     this.height = window.innerHeight;
     this.aspectRation = this.width / this.height;
 
-    this.texture = `./img/module-5/scenes-textures/scene-0.png`;
+    this.texture = {src: `./img/module-5/scenes-textures/scene-0.png`, options: {hue: 0.0}};
     this.textureWidth = 2048;
     this.textureHeight = 1024;
     this.textureRatio = this.textureWidth / this.textureHeight;
@@ -39,11 +39,14 @@ export default class Intro {
 
     const loadManager = new THREE.LoadingManager();
     const textureLoader = new THREE.TextureLoader(loadManager);
-    const loadedTexture = textureLoader.load(this.texture);
+    const loadedTexture = textureLoader.load(this.texture.src);
 
     loadManager.onLoad = () => {
       const geometry = new THREE.PlaneGeometry(1, 1);
-      const material = new THREE.RawShaderMaterial(helperRawShaderMaterial(loadedTexture));
+      const material = new THREE.RawShaderMaterial(helperRawShaderMaterial({
+        map: {value: loadedTexture},
+        options: {value: this.texture.options}
+      }));
       const image = new THREE.Mesh(geometry, material);
 
       image.scale.x = this.textureWidth;
