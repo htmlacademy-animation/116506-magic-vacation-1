@@ -15,18 +15,31 @@ export default class Story {
       {src: `./img/module-5/scenes-textures/scene-4.png`, options: {hue: 0.0}},
     ];
 
+    this.bubbleGlareOffset = 0.8;
+    this.bubbleGlareStartRadianAngle = 2;
+    this.bubbleGlareEndRadianAngle = 2.8;
+
     this.bubbles = [
       {
         radius: 100.0,
         position: [this.center.x - 50, 450],
+        glareOffset: this.bubbleGlareOffset,
+        glareAngleStart: this.bubbleGlareStartRadianAngle,
+        glareAngleEnd: this.bubbleGlareEndRadianAngle
       },
       {
         radius: 60.0,
         position: [this.center.x + 100, 300],
+        glareOffset: this.bubbleGlareOffset,
+        glareAngleStart: this.bubbleGlareStartRadianAngle,
+        glareAngleEnd: this.bubbleGlareEndRadianAngle
       },
       {
         radius: 40.0,
         position: [this.center.x - 200, 150],
+        glareOffset: this.bubbleGlareOffset,
+        glareAngleStart: this.bubbleGlareStartRadianAngle,
+        glareAngleEnd: this.bubbleGlareEndRadianAngle
       },
     ];
 
