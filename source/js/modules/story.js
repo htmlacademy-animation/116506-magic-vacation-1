@@ -1,7 +1,9 @@
 import * as THREE from 'three';
 import helperRawShaderMaterial from '../helpers/helperRawShaderMaterial';
+import {animateFPS} from '../helpers/animate.js';
 
-export default class Story {
+
+export class Story {
   constructor() {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
@@ -10,7 +12,20 @@ export default class Story {
 
     this.textures = [
       {src: `./img/module-5/scenes-textures/scene-1.png`, options: {hue: 0.0}},
-      {src: `./img/module-5/scenes-textures/scene-2.png`, options: {hue: -0.25, isMagnifier: true}},
+      {src: `./img/module-5/scenes-textures/scene-2.png`,
+        options: {
+          hue: 0.1,
+          isMagnifier: true,
+          animationSettings: {
+            hue: {
+              initalHue: 0.1,
+              finalHue: -0.7,
+              duration: 2000,
+              variation: 0.4,
+            },
+          }
+        }
+      },
       {src: `./img/module-5/scenes-textures/scene-3.png`, options: {hue: 0.0}},
       {src: `./img/module-5/scenes-textures/scene-4.png`, options: {hue: 0.0}},
     ];
@@ -113,13 +128,66 @@ export default class Story {
     };
   }
 
+  resetHueShift() {
+    this.textures[1].options.hue = this.textures[1].options.hue;
+  }
+
+  hueShiftIntensityAnimationTick(from, to) {
+    return (progress) => {
+      let hueShift;
+      if (progress < 0.5) {
+        hueShift = from + progress * (to - from);
+      } else {
+        hueShift = to + progress * (from - to);
+      }
+      this.textures[1].options.hue = hueShift;
+    };
+  }
+
+  animateHueShift() {
+    const {initalHue, finalHue, duration, variation} = this.textures[1].options.animationSettings.hue;
+
+    const offset = (Math.random() * variation * 2 + (1 - variation));
+
+    let anim = () => {
+      animateFPS(this.hueShiftIntensityAnimationTick(initalHue, finalHue * offset), duration * offset, 30, () => {
+        if (activeScene === 1) {
+          anim();
+        }
+      });
+    };
+    anim();
+
+  }
+
   render() {
     this.renderer.render(this.scene, this.camera);
+    if (activeScene === 1) {
+      requestAnimationFrame(this.render);
+    } else {
+      cancelAnimationFrame(this.render);
+    }
   }
 
   setScene(i) {
     this.camera.position.x = this.textureWidth * i;
     this.render();
+
+    activeScene = i;
+
+    if (i === 1) {
+      if (animHueKey !== true) {
+        animHueKey = true;
+        this.resetHueShift();
+        this.animateHueShift();
+      }
+    } else {
+      animHueKey = false;
+    }
   }
 
 }
+
+export let activeScene;
+
+let animHueKey = false;

@@ -1,4 +1,4 @@
-import {Animation} from '../helpers/animate.js';
+import {Animation} from "../helpers/animate.js";
 import easing from '../helpers/utilities';
 import canvasScene from '../helpers/canvasScene';
 
