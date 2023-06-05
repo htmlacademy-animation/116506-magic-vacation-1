@@ -1,5 +1,5 @@
 import Swiper from "swiper";
-import Story from './story';
+import {Story} from './story';
 
 export default () => {
   let storySlider;
@@ -24,8 +24,10 @@ export default () => {
               story.setScene(1);
             } else if (storySlider.activeIndex === 4 || storySlider.activeIndex === 5) {
               story.setScene(2);
+              bodyDOM.classList.add(`story-slide-3`);
             } else if (storySlider.activeIndex === 6 || storySlider.activeIndex === 7) {
               story.setScene(3);
+              bodyDOM.classList.add(`story-slide-4`);
             }
           },
           resize: () => {
@@ -52,23 +54,24 @@ export default () => {
         },
         on: {
           slideChange: () => {
-            bodyDOM.classList.remove(`story-slide-1`);
-            bodyDOM.classList.remove(`story-slide-2`);
-            bodyDOM.classList.remove(`story-slide-3`);
-            bodyDOM.classList.remove(`story-slide-4`);
-
-            if (storySlider.activeIndex === 0) {
-              story.setScene(0);
-              bodyDOM.classList.add(`story-slide-1`);
-            } else if (storySlider.activeIndex === 2) {
-              story.setScene(1);
-              bodyDOM.classList.add(`story-slide-2`);
-            } else if (storySlider.activeIndex === 4) {
-              story.setScene(2);
-              bodyDOM.classList.add(`story-slide-3`);
-            } else if (storySlider.activeIndex === 6) {
-              story.setScene(3);
-              bodyDOM.classList.add(`story-slide-4`);
+            for (let i = 1; i <= 4; i++) {
+              if (storySlider.activeIndex === 0) {
+                story.setScene(0);
+                bodyDOM.classList.remove(`story-slide-${i}`);
+                bodyDOM.classList.remove(`story-slide-1`);
+              } else if (storySlider.activeIndex === 2) {
+                story.setScene(1);
+                bodyDOM.classList.remove(`story-slide-${i}`);
+                bodyDOM.classList.add(`story-slide-2`);
+              } else if (storySlider.activeIndex === 4) {
+                story.setScene(2);
+                bodyDOM.classList.remove(`story-slide-${i}`);
+                bodyDOM.classList.add(`story-slide-3`);
+              } else if (storySlider.activeIndex === 6) {
+                story.setScene(3);
+                bodyDOM.classList.remove(`story-slide-${i}`);
+                bodyDOM.classList.add(`story-slide-4`);
+              }
             }
           },
           resize: () => {
